@@ -1,0 +1,65 @@
+%=====================================================================================
+\section{Experimental Setup}\label{sec:setup}
+%=====================================================================================
+\para{Benchmarks}
+We use the 56 Solomon instances ($n=100$)~\cite{solomon1987} and the 60+60
+Gehring--Homberger instances with $n=200$ and $n=400$~\cite{gehring1999}. For Solomon,
+the reference is the hierarchical best-known solution (BKS) table of SINTEF,
+cross-checked against the CVRPLIB solutions (identical on all \tCvSame{} instances with
+the BKS fleet; none of our runs dominates a BKS). For Gehring--Homberger, whose
+hierarchical BKS are not available in machine-readable form, the reference is the
+\emph{best solution found} over all our runs.
+
+\para{Baselines}
+\Uni{} samples operators uniformly; \Rw{} is the classical roulette wheel of
+\Sect~\ref{sec:method}. \textbf{Tuned \Rw{}} is the best of 36 RW configurations
+(update period, reaction factor $\rho$, maximum destroy scale $q_{\max}$ and
+temperature deviation $m$; selected: \xrwtParams{}). \textbf{Tuned static} is the best
+of 30 constant actions of the \sgalns{} action space: the RW action and String/Regret-3,
+the best lead pair of the pre-training headroom study (Table~S4), each with all destroy
+scales and temperatures (selected: String/Regret-3, $q=30\%$, $m=0.3$). The grid thus
+contains the action later learned by seed~0, but was fixed before training. Both
+baselines are selected on 24 \emph{generated} instances (3 seeds, $T=5{,}000$) by the
+score $5\Delta\mathrm{NV}+100\Delta\mathrm{TD}/\mathrm{TD}$ against \Rw{} (the weighting
+of Eq.~\eqref{eq:reward}). This takes \qTuneRunsSt{} and \qTuneRunsRw{} runs of 5{,}000
+iterations, i.e.\ \qTuneCpuSt{} and \qTuneCpuRw{} CPU-minutes (about \qTuneWallSt{} and
+\qTuneWallRw{} minutes on 8 cores), whereas one
+training run (2{,}400 episodes of 2{,}500 iterations plus network updates) occupies
+8 cores for \tTrainMin{} minutes. The tuning instances are disjoint from the training
+and validation instances, and the benchmarks serve only as test sets; Table~S14 relates
+the tuning budget to quality on held-out tuning instances, which saturates at about 30
+random constant actions (score \qTuneThirty{}). As a check against a too narrow grid,
+we also tuned over all 285 constant actions (\rcostFullRuns{} runs, \rcostFullCpu{}
+CPU-minutes). % RUN-DEPENDENT
+The \textbf{iteration-level baselines} make one PPO decision per iteration over the 18
+operator pairs, trained on 100-iteration episodes as in DR-ALNS~\cite{reijnen2024},
+with an MLP encoder (PPO-ALNS-like~\cite{wang2025ppoalns}, 2{,}400 episodes) or our GNN
+encoder (GRLOS-like~\cite{johnn2024grlos}; stopped after \tIterGnnEp{} episodes or
+\tIterGnnMin{} minutes, \tIterGnnRatio{}$\times$ the training time of \sgalns{}).
+
+{\widetables
+\input{generated/tables/compare}
+\input{generated/tables/stats}}
+\para{Protocol}
+Solomon runs use 5 seeds per instance (3 for the iteration-level baselines and the
+budget study), Gehring--Homberger runs 3. We report cumulative vehicles (CNV) and
+distance (CTD), the TD gap to the reference over runs with the reference NV, and the
+primal integral (PI) of $f$, in \% of the reference.
+Because $f$ mixes two scales, we never rank-test it. The unit of every test is
+the instance: the runs (seeds) of a method on an instance are averaged first. Pairwise
+comparisons are hierarchical and two-sided: the difference in CNV (bootstrap 95\% CI, Wilcoxon
+signed-rank test on per-instance mean NV), then the relative TD difference on the
+instances where both methods have the same mean NV. Equivalence is tested with TOST
+($\alpha=0.05$) using margins fixed beforehand: \rdeltaNV{} vehicles per instance and
+\rdeltaTD{}\% of distance. The fleet margin, one vehicle on every tenth instance, is
+practically negligible but exceeds the training-seed standard deviation of \sgalns{}
+(\qSeedSd{} vehicles in total), so we also report equivalence at half the margin. W/T/L counts the instances on which \sgalns{} has a lower,
+equal (identical solutions) or higher mean $f$, with a two-sided sign test
+(Holm-corrected over the baselines of Table~\ref{tab:compare}).
+Friedman--Nemenyi tests~\cite{demsar2006} cover the six methods run with 5 seeds. Each run uses one core of an Apple M1 (times include vehicle reduction and inference).
+Tables~S1--S17, Figs.~S1--S4 and implementation details are in the supplement. The
+tuned baselines, seeds 1--4, \sgc{}, the time-matched study, the $n=400$ set and the
+analyses of Table~\ref{tab:probe} and Tables~S14--S17 were added after we observed policy collapse; none uses benchmark data for selection. Code,
+trained models, raw results and the BKS table are available at
+\ifanonymous\url{https://anonymous.4open.science/r/XXXX} (anonymised for review).%
+\else\url{https://github.com/XXXX/sg-alns}.\fi

@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\caption{Training seeds of \sgalns{} (Solomon, $T=5{,}000$)}\label{tab:seeds5}
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{crrrcll}
+\toprule
+Seed & CNV & Gap \% & PI \% & vs.\ \Rw{} & Most frequent action & Share\\ \midrule
+0 & 418.0 & 1.48 & 5.05 & $-$3.4 (0.012) & RW weights, $q$=30\%, $m$=3 & 1.00\\
+1 & 420.2 & 2.05 & 5.24 & $-$1.2 (0.136) & Worst/Regret-3, $q$=30\%, $m$=0.3 & 1.00\\
+2 & 418.8 & 2.11 & 4.94 & $-$2.6 (0.041) & Wait/Regret-3, $q$=30\%, $m$=1 & 1.00\\
+3 & 419.2 & 1.57 & 5.15 & $-$2.2 (0.058) & Worst/Regret-3, $q$=30\%, $m$=1 & 0.60\\
+4 & 420.2 & 1.64 & 5.20 & $-$1.2 (0.206) & Worst/Regret-3, $q$=30\%, $m$=1 & 1.00\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{2pt}\parbox{\linewidth}{\footnotesize 5 evaluation seeds. vs.\ \Rw{}: $\Delta$CNV and two-sided Wilcoxon $p$ on per-instance vehicles; last columns: greedy action chosen most often and its share.}
+\end{table}

@@ -1,0 +1,2 @@
+./run_train.sh: line 5:  2767 Terminated: 15          $PY -u scripts/train.py --name $name --set $COMMON "$@" > logs/train_$name.log 2>&1
+ALL_TRAIN_DONE

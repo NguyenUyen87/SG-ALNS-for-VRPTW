@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\caption{Computational cost}\label{tab:cost}
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrr}
+\toprule
+Procedure & Runs & CPU-min & Wall-min\\ \midrule
+Tuned static (30 actions) & 2,232 & 25 & 3\\
+Tuned \Rw{} (36 configs) & 2,664 & 37 & 5\\
+Tuned static (all 285 actions) & 20,592 & 302 & 38\\
+\sgalns{} training (one seed, measured on seeds 3--4) & 2{,}400 episodes & 75 & 77$^{\dagger}$\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{2pt}\parbox{\linewidth}{\footnotesize CPU-minutes summed over processes; wall-clock on 8 cores. $^{\dagger}$measured wall-clock. Tuning wall-clock assumes 8 parallel workers.}
+\end{table}

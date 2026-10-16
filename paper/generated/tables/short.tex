@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\caption{Short budget $T=200$}\label{tab:short}
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrc}
+\toprule
+Method & CNV & Gap \% & Time s & vs.\ \Rw{}\\ \midrule
+\Rw{} & 428.3 & 5.86 & 0.14 & --\\
+Tuned static & 425.3 & 4.59 & 0.17 & $-$3.0 (0.009)\\
+\sgalns{} & 425.0 & 5.37 & 0.20 & $-$3.3 (0.026)\\
+Iteration-level GNN & 428.3 & 4.83 & 0.58 & $-$0.0 (0.750)\\
+Iteration-level MLP & 428.3 & 4.83 & 0.38 & $-$0.0 (0.750)\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{2pt}\parbox{\linewidth}{\footnotesize Solomon, 3 seeds; close to the 100-iteration training episodes of the iteration-level agents. vs.\ \Rw{}: $\Delta$CNV and two-sided Wilcoxon $p$.}
+\end{table}

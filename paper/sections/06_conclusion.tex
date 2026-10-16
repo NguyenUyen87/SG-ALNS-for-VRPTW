@@ -1,0 +1,11 @@
+%=====================================================================================
+\section{Conclusion}\label{sec:conclusion}
+%=====================================================================================
+We evaluated \sgalns{}, a segment-level RL controller for ALNS on the VRPTW, with
+rarely applied controls. Its gain over the roulette wheel is fragile across seeds and
+multiple comparisons; its policies are (almost) state-independent, and the one
+time-dependent schedule it learned is no better than a tuned constant. In our setting,
+learned ALNS ``control'' is, in effect, learned configuration: better results alone do
+not demonstrate adaptive control, although richer action spaces may leave more room for
+it. Practitioners can obtain most of the benefit from cheap offline configuration.
+Future work will test continuous, size-relative actions and electric VRPs.

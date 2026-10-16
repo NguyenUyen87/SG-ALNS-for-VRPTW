@@ -1,0 +1,122 @@
+% Supplementary material (Springer LNCS layout). Anonymous version: supplementary_anonymous.tex
+\documentclass[runningheads]{llncs}
+\usepackage{lmodern}
+\input{preamble}
+\newcommand{\Sect}{Sect.}\newcommand{\methodsec}{3}
+% labels of the main paper referenced here
+\makeatletter\newlabel{tab:compare}{{3}{6}{}{}{}}\newlabel{tab:stats}{{4}{7}{}{}{}}\newlabel{fig:behaviour}{{3}{8}{}{}{}}\newlabel{eq:reward}{{1}{4}{}{}{}}\makeatother
+\renewcommand{\thetable}{S\arabic{table}}\renewcommand{\thealgocf}{S\arabic{algocf}}\renewcommand{\thefigure}{S\arabic{figure}}
+\begin{document}
+\title{Supplementary Material for\\ SG-ALNS: Segment-Level Graph RL\\ for ALNS Configuration in the VRPTW}
+\titlerunning{Supplementary Material}
+\ifanonymous
+  \author{Anonymous Author(s)}\authorrunning{Anonymous et al.}\institute{Affiliation withheld for double-blind review}
+\else
+  \author{Duong Q. Vo\inst{1} \and Sang X. Tran\inst{2}\textsuperscript{(\Letter)} \and Uyen T. Nguyen\inst{1}\textsuperscript{(\Letter)}}
+  \authorrunning{D. Q. Vo et al.}
+  \institute{Faculty of Information Technology, Vinh University, Nghe An, Vietnam\\
+    \email{235748020110196@vinhuni.edu.vn, uyennt@vinhuni.edu.vn}
+    \and Institute of Information Technology and Digital Transformation,\\ Vinh University, Nghe An, Vietnam\\
+    \email{sangtx@vinhuni.edu.vn}}
+\fi
+\maketitle
+
+
+\input{sections/supp/details}
+
+\section*{S0 Tabular Results}
+\emph{Statistics.} The paper bases every conclusion on hierarchical, two-sided tests (fleet first, then distance on
+equal-fleet instances) with TOST equivalence (Table~4 of the paper). Tables~\ref{tab:ablation},
+\ref{tab:timematched} and~\ref{tab:budget2} additionally list W/T/L on $f$ with one-sided Wilcoxon $p$-values; these
+are descriptive and are not used for any conclusion.
+
+Tables~\ref{tab:solomon}, \ref{tab:collapse} and~\ref{tab:seeds5} give the class-wise Solomon results, the greedy
+actions of all policies and the training-seed study that are shown graphically in Fig.~3 of the paper and Fig.~S3.
+\input{generated/tables/solomon}
+\input{generated/tables/collapse}
+\input{generated/tables/seeds5}
+
+\section*{S1 Headroom and Static Configurations}
+Table~\ref{tab:headroom} compares static choices with \Rw{} on generated instances before training: no static choice
+dominates \Rw{}, which motivates the expert-inclusive action space. Table~\ref{tab:static} lists the
+static-configuration grid used to select the tuned static baseline, and Table~\ref{tab:dynhead} the dynamic-headroom
+study (two-phase schedules).
+\input{generated/tables/headroom}
+\input{generated/tables/static}
+\input{generated/tables/dynhead}
+
+\section*{S2 Ablations}
+Each ablation is a separately trained policy (seed~0). Because every greedy policy is (almost) state-independent
+(Fig.~3a of the paper), the differences reflect the constant configuration each training run converged to, not the
+value of the removed component.
+\input{generated/tables/ablation}
+
+\section*{S3 Run-Time Breakdown and Convergence}
+Table~\ref{tab:timing} splits the run time into the vehicle-reduction phase, the ALNS main phase and the policy
+overhead (features and inference). The policy accounts for \xpolShareSg{}--\xpolShareCtx{}\% of the run time at
+$n=400$; the rest is ALNS time, which depends on the operators and temperature selected. Figure~\ref{fig:conv} shows convergence
+on Solomon, and Fig.~\ref{fig:budget} the effect of the budget.
+\input{generated/tables/timing}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.55\linewidth]{convergence.pdf}
+\caption{Mean gap of the best-so-far objective $f$ to the BKS along the main phase (Solomon, 3 seeds, log scale).}\label{fig:conv}
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.92\linewidth]{budget.pdf}
+\caption{Cumulative vehicles and TD gap on Solomon as a function of the budget $T$ (3 seeds).}\label{fig:budget}
+\end{figure}
+
+\section*{S4 Time-Matched Comparison and Budgets}
+\input{generated/tables/timematched}
+\input{generated/tables/budget2}
+
+\section*{S5 Actions of \sgc{}}
+\input{generated/tables/ctx_actions}
+
+\section*{S6 Instance Size}
+\input{generated/tables/scale}
+
+\section*{S7 Learned Actions}
+Table~\ref{tab:learners} lists the greedy action of every trained policy; the six controls are summarised
+in Table~1 of the paper.
+\input{generated/tables/learners}
+
+\section*{S8 BKS Cross-Check and Reproducibility}
+The Solomon BKS table was cross-checked against the 56 CVRPLIB solutions (DIMACS convention: distance-only objective
+with distances truncated to one decimal). Re-evaluated with unrounded distances, \tCvFeas{} of them are feasible; on
+the \tCvSame{} instances where they use the BKS fleet, they reproduce the BKS distance exactly. Over \tNsolRuns{}
+Solomon runs, no solution dominates a BKS, and \tBksHit{} BKS are reproduced exactly. Gehring--Homberger instances
+with $n=400$ were converted from the VRPLIB files of the PyVRP instance repository; the same converter reproduces our
+$n=200$ files exactly. The script \texttt{run\_all.sh} regenerates every result, and \texttt{make\_paper.sh} every
+number, table and figure of the paper.
+
+\section*{S9 Additional Analyses}
+The state-sensitivity probe of the trained policies is Table~5 of the paper.
+\emph{How much tuning is needed?} Table~\ref{tab:tuning} selects constant actions on half of the generated tuning
+instances and scores them on the other half. \emph{Reward.} Table~\ref{tab:reward} retrains seed~0 with other vehicle
+weights $\lambda$. \emph{Iteration-level agents near their horizon.} Table~\ref{tab:short} evaluates them at $T=200$.
+\emph{Instance classes at $n=400$.} Table~\ref{tab:hgclass} splits the $n=400$ results by class.
+\input{generated/tables/tuning}
+\input{generated/tables/reward}
+\input{generated/tables/short}
+\input{generated/tables/hgclass}
+
+\section*{S10 Additional Figures}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{details.pdf}
+\caption{(a) Vehicles above the BKS per Solomon class (sum over instances, mean over 5 seeds). (b) Mean run time per
+instance at $n=400$, split into vehicle reduction, ALNS main phase and policy overhead (number: total). (c) Validation
+score against \Rw{} on 24 generated instances during training (rolling mean of 4 evaluations).}\label{fig:details}
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{cd_entropy.pdf}
+\caption{(a) Critical-difference diagram (Friedman--Nemenyi, $\alpha=0.05$) of the six methods run with 5 seeds on
+Solomon, $T=5{,}000$; methods joined by a bar are not significantly different. (b) Policy entropy (sum over the three
+heads) during training.}\label{fig:cdS}
+\end{figure}
+\end{document}

@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering
+\caption{\sgalns{} against the baselines on Solomon ($T=5{,}000$)}\label{tab:compare}
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrrrcr}
+\toprule
+Method & CNV & CTD & Gap \% (runs) & PI \% & Time s & W/T/L & $p$\\ \midrule
+BKS & 405 & 57,187 & 0.00 & -- & -- & -- & -- \\ \midrule
+\sgalns{} (seed 0, pre-designated) & 418.0 & 57,188 & 1.48 (215) & 5.05 & 2.15 & -- & -- \\
+\sgalns{}, 5 training seeds (mean$\pm$sd) & 419.3$\pm$0.9 & 57,211 & 1.77$\pm$0.29 & 5.12 & 2.41 & -- & -- \\ \midrule
+\Rw{} & 421.4 & 57,115 & 1.86 (201) & 5.58 & 1.09 & 25/16/15 & 0.615\\
+Tuned \Rw{} & 419.8 & 57,144 & 1.61 (206) & 5.30 & 1.44 & 25/17/14 & 0.541\\
+\Uni{} & 421.0 & 57,352 & 2.09 (201) & 5.44 & 1.10 & 35/16/5 & $<$0.001\\
+Tuned static & 418.6 & 57,190 & 1.69 (212) & 5.07 & 0.97 & 25/16/15 & 0.615\\
+Tuned static, all 285 actions & 419.0 & 57,017 & 1.40 (210) & 5.20 & 2.34 & 18/16/22 & 1.000\\
+\sgc{} & 422.0 & 57,512 & 2.44 (195) & 5.56 & 1.71 & 34/16/6 & $<$0.001\\
+\sgalns{} (sampled) & 418.4 & 57,190 & 1.53 (213) & 4.95 & 1.44 & 21/16/19 & 1.000\\
+Iteration-level (GNN / MLP)$^{*}$ & 425.3 & 57,424 & 2.63 (111) & 5.83 & 18.8 / 10.7 & 34/15/7 & $<$0.001\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{2pt}\parbox{\linewidth}{\footnotesize 5 seeds ($^{*}$3 seeds, compared on common seeds). Gap: TD gap to the BKS over runs with the BKS fleet (number of runs). W/T/L: instances where \sgalns{} has a lower/equal/higher mean $f$; $p$: two-sided sign test, Holm-corrected. $^{*}$Our re-implementations (100-iteration training episodes); both return identical solutions.}
+\end{table}

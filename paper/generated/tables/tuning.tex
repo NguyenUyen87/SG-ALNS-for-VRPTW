@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Tuning budget vs.\ held-out quality}\label{tab:tuning}
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{rrrrr}
+\toprule
+$b$ & CPU-min & Held-out score & P10 & P90\\ \midrule
+1 & 1 & $-$1.42 & $-$3.18 & +0.34\\
+3 & 2 & $-$0.44 & $-$1.45 & +0.68\\
+10 & 5 & +0.15 & $-$0.57 & +0.78\\
+30 & 16 & +0.47 & +0.06 & +0.83\\
+100 & 53 & +0.47 & +0.18 & +0.83\\
+285 & 150 & +0.18 & +0.18 & +0.18\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{2pt}\parbox{\linewidth}{\footnotesize 285 constant actions, generated instances, $T=5{,}000$, 3 seeds. For a budget of $b$ random configurations, the best one on 12 selection instances is scored on 12 held-out instances (score vs.\ \Rw{}: $5\Delta$NV$+100\Delta$TD/TD; mean, 10th and 90th percentile over 500 draws). CPU-min: cost of the selection runs.}
+\end{table}

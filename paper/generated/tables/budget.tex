@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\caption{Effect of the iteration budget on Solomon (3 seeds)}\label{tab:budget}
+\setlength{\tabcolsep}{2.4pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{rrrrrrrrrcc}
+\toprule
+ & \multicolumn{4}{c}{CNV} & \multicolumn{4}{c}{Gap TD (\%)} & \multicolumn{2}{c}{\sgalns{} vs.} \\ \cmidrule(lr){2-5}\cmidrule(lr){6-9}\cmidrule(lr){10-11}
+$T$ & Uni & RW & Static & SG & Uni & RW & Static & SG & RW & Static\\ \midrule
+1,000 & 426.3 & 424.3 & 422.0 & 421.3 & 3.47 & 3.23 & 2.98 & 2.54 & 32/14/10 ($<$0.001) & 27/14/15 (0.028)\\
+5,000 & 420.7 & 422.0 & 418.3 & 418.0 & 2.20 & 1.85 & 1.77 & 1.52 & 23/16/17 (0.023) & 21/16/19 (0.150)\\
+20,000 & 418.7 & 418.3 & 416.0 & 417.0 & 1.51 & 1.12 & 1.08 & 0.97 & 27/16/13 (0.030) & 16/16/24 (0.753)\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{2pt}\parbox{\linewidth}{\footnotesize Tuned static was tuned for $T=5{,}000$; \sgalns{} was trained with $T=2{,}500$. Last columns: \sgalns{} vs.\ \Rw{} and vs.\ tuned static (W/T/L, one-sided Wilcoxon $p$).}
+\end{table}

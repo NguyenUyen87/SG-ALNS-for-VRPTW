@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\caption{Gehring--Homberger instances with $n=200$ and $n=400$ ($T=5{,}000$, 3 seeds, 60 instances each)}\label{tab:scale}
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{clrrrrrc}
+\toprule
+$n$ & Method & CNV & CTD & Gap (\%) & PI (\%) & Time (s) & vs.\ \Rw{}\\ \midrule
+\multirow{5}{*}{200} & \Rw{} & 697.7 & 173,654 & 1.93 & 0.64 & 2.92 & --\\
+ & Tuned \Rw{} & 697.7 & 173,225 & 1.66 & 0.62 & 6.32 & 34/6/20 (0.012)\\
+ & Tuned static & 697.7 & 173,741 & 1.93 & 0.53 & 3.43 & 32/4/24 (0.120)\\
+ & \sgalns{} & 697.3 & 174,722 & 2.41 & 0.65 & 5.28 & 18/6/36 (0.979)\\
+ & \sgc{} & 698.0 & 172,937 & 1.66 & 0.56 & 6.97 & 34/6/20 (0.016)\\ \midrule
+\multirow{5}{*}{400} & \Rw{} & 1397.3 & 411,122 & 2.79 & 0.66 & 17.55 & --\\
+ & Tuned \Rw{} & 1397.0 & 411,267 & 2.75 & 0.63 & 22.42 & 35/0/25 (0.327)\\
+ & Tuned static & 1395.7 & 417,026 & 3.79 & 0.47 & 21.34 & 27/1/32 (0.844)\\
+ & \sgalns{} & 1396.0 & 422,567 & 5.01 & 0.61 & 29.30 & 17/1/42 (1.000)\\
+ & \sgc{} & 1396.7 & 405,283 & 1.53 & 0.51 & 23.76 & 43/0/17 ($<$0.001)\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{2pt}\parbox{\linewidth}{\footnotesize All policies and configurations were obtained with $n\le200$ (\sgc{}) or $n\le100$ (all others). Gap and PI relative to the best solution found in the experiment; last column: W/T/L vs.\ \Rw{} (one-sided Wilcoxon).}
+\end{table}

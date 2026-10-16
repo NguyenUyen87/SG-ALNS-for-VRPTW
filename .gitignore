@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+# LaTeX build artefacts
+paper/_stage/
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.blg
+*.synctex.gz

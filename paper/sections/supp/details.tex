@@ -1,0 +1,40 @@
+\section*{Implementation Details}
+\emph{Instances and state graph.} With the depot horizon $H=l_0$, the six static node features are $x_i/100$, $y_i/100$,
+$d_i/Q$, $e_i/H$, $l_i/H$ and $\sigma_i/H$. The six dynamic features are computed on the \emph{current} solution $x$
+(not on the best one): waiting time, slack $l_i-b_i$ and forward time slack (Savelsbergh, 1992), each divided by $H$;
+cumulative load divided by $Q$; relative position in the route; and a routed flag (the depot has zeros). The edge set
+contains, for every customer, directed arcs to its 10 nearest customers, arcs between the depot and its 10 nearest
+customers, and both directions of every arc of the current routes (depot legs included). Each edge carries
+$c_{ij}/c_{\max}$ and a flag (0: neighbour arc, 1: route arc). The graph therefore grows with $n$, and mean and max
+pooling give an embedding of fixed size. The global vector holds $t/T$, $\tau/\tau_0$, the number of iterations since
+the last new best divided by $0.2T$ (capped at 1), $(f(x)-f(x^\star))/f(x^\star)$, $(f(x_0)-f(x^\star))/f(x_0)$ with
+$x_0$ the solution after vehicle reduction, the number of routes of $x$ divided by that of the I1 solution, and the
+success rate (share of uses that improved the current solution) of each of the nine
+operators in the last segment. \sgc{} appends $n/200$ and $T/5{,}000$.
+
+\emph{Roulette wheel.} After each segment, $w_o\leftarrow\max\{(1-\rho)w_o+\rho\,\psi_o/u_o,\ 10^{-3}\}$, with
+$\psi_o/u_o:=0$ for an operator that was not used, so the weight of an unused operator decays geometrically towards the
+floor. Destroy and repair probabilities are the weights normalised within each group. Scores per use are 33 (new
+best), 9 (better than the current solution) and 13 (accepted worse solution). A repair that cannot insert every customer is
+rejected and scores 0.
+
+\emph{Factorised policy.} The three heads are categorical distributions over $a^1$ (19), $a^2$ (5) and $a^3$ (3)
+computed from the same embedding, i.e.\ conditionally independent given the state:
+$\log\pi(a\mid s)=\sum_k\log\pi_k(a^k\mid s)$, and the entropy used in the PPO loss is the sum of the three head
+entropies (exact for this factorisation). In an ablation, the removed head is masked to its expert value and
+contributes zero to both. The output weights are scaled by 0.1 at initialisation and the biases of the expert values
+are set to $3$ ($a^1$, RW) and $2$ ($a^2$, default range; $a^3$, $m=1$); the neutral-prior variant sets all biases to 0.
+
+\emph{PPO.} Rewards are divided by a running standard deviation; each update runs 4 epochs over minibatches of 256
+decisions, with value coefficient 0.5 and gradient-norm clipping at 0.5. Every 5 updates the greedy policy is scored
+against \Rw{} on 24 fixed generated instances ($n=100$); this validation is only logged, and the \emph{final}
+checkpoint is evaluated. Training instances, validation instances (seed 12345) and the 24 tuning instances of the
+tuned baselines (seeds 90000--90023) are drawn from disjoint random streams of Solomon's generator; no benchmark
+instance is used for any selection.
+
+\emph{Objective and reward.} The best solution $x^\star$ is always tracked with $f=10^4\mathrm{NV}+\mathrm{TD}$. Over
+all \qLexRuns{} runs of this study, the largest distance difference between two solutions of the same instance is
+\qLexRange{} (the largest TD is \qLexTdMax{}), so $f$ orders every pair of our solutions lexicographically (NV first),
+also at $n=400$. The reward of Eq.~(1) is a learning signal only: one saved vehicle is worth $\lambda=5$ points,
+i.e.\ as much as a 5\% reduction of the initial distance. Unlike $f$, the reward therefore does not enforce the
+vehicle-first order: it is a shaping choice, and Table~\ref{tab:reward} varies $\lambda$.

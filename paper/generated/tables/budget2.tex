@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{Iteration budget on Solomon (3 seeds)}\label{tab:budget2}
+\setlength{\tabcolsep}{1.6pt}\scriptsize
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{rrrrrrrrrrrcc}
+\toprule
+& \multicolumn{5}{c}{CNV} & \multicolumn{5}{c}{Gap TD (\%)} & \multicolumn{2}{c}{\sgalns{} vs.}\\ \cmidrule(lr){2-6}\cmidrule(lr){7-11}\cmidrule(lr){12-13} $T$ & RW & RWt & St & SG & SG-C & RW & RWt & St & SG & SG-C & RWt & St\\ \midrule
+1,000 & 424.3 & 423.3 & 422.0 & 421.3 & 426.3 & 3.23 & 3.08 & 2.98 & 2.54 & 3.36 & 25/14/17 (0.002) & 27/14/15 (0.028)\\
+5,000 & 422.0 & 420.0 & 418.3 & 418.0 & 421.7 & 1.85 & 1.43 & 1.77 & 1.52 & 2.46 & 24/17/15 (0.064) & 21/16/19 (0.150)\\
+20,000 & 418.3 & 417.3 & 416.0 & 417.0 & 419.7 & 1.12 & 0.87 & 1.08 & 0.97 & 1.55 & 21/17/18 (0.506) & 16/16/24 (0.753)\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{2pt}\parbox{\linewidth}{\footnotesize CNV and gap for \Rw{}, tuned \Rw{} (RWt), tuned static (St), \sgalns{} (SG) and \sgc{} (SG-C); last columns: \sgalns{} vs.\ tuned \Rw{} and vs.\ tuned static (W/T/L, one-sided Wilcoxon $p$). Tuned baselines were tuned for $T=5{,}000$; \sgalns{} was trained with $T=2{,}500$ and \sgc{} with $T\in\{1{,}000,2{,}500,5{,}000\}$.}
+\end{table}

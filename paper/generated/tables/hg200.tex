@@ -1,0 +1,26 @@
+\begin{table}[t]
+\centering
+\caption{Gehring--Homberger instances ($n=200$, $T=5{,}000$, 3 seeds)}\label{tab:hg200}
+\setlength{\tabcolsep}{3.5pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+Class & \multicolumn{2}{c}{\Uni{}} & \multicolumn{2}{c}{\Rw{}} & \multicolumn{2}{c}{\sgalns{}} & \multicolumn{2}{c}{Tuned static}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+ & CNV & CTD & CNV & CTD & CNV & CTD & CNV & CTD\\ \midrule
+C1 & 189.7 & 27,592 & \textbf{189.0} & \textbf{27,500} & \textbf{189.0} & 27,713 & \textbf{189.0} & 27,724\\
+C2 & \textbf{60.0} & 18,481 & \textbf{60.0} & 18,431 & \textbf{60.0} & 18,498 & \textbf{60.0} & \textbf{18,420}\\
+R1 & \textbf{182.0} & 38,254 & \textbf{182.0} & 37,735 & \textbf{182.0} & 37,814 & \textbf{182.0} & \textbf{37,558}\\
+R2 & \textbf{41.0} & 29,768 & \textbf{41.0} & 29,914 & \textbf{41.0} & 29,860 & \textbf{41.0} & \textbf{29,603}\\
+RC1 & 182.0 & 34,524 & 181.0 & 34,086 & \textbf{180.7} & \textbf{34,753} & 181.0 & 34,580\\
+RC2 & \textbf{44.7} & 26,045 & \textbf{44.7} & 25,989 & \textbf{44.7} & 26,085 & \textbf{44.7} & \textbf{25,856}\\
+\midrule Total & 699.3 & 174,665 & 697.7 & 173,654 & \textbf{697.3} & \textbf{174,722} & 697.7 & 173,741\\
+\midrule Gap TD (\%)$^{a}$ & \multicolumn{2}{c}{2.81} & \multicolumn{2}{c}{1.93} & \multicolumn{2}{c}{2.41} & \multicolumn{2}{c}{\textbf{1.93}}\\
+Primal integral (\%) & \multicolumn{2}{c}{0.77} & \multicolumn{2}{c}{0.64} & \multicolumn{2}{c}{0.65} & \multicolumn{2}{c}{\textbf{0.53}}\\
+Time (s) & \multicolumn{2}{c}{2.92} & \multicolumn{2}{c}{2.92} & \multicolumn{2}{c}{5.28} & \multicolumn{2}{c}{3.43}\\
+\bottomrule
+\multicolumn{9}{l}{\footnotesize $^{a}$ mean over runs whose NV equals the reference NV.}\\
+\end{tabular}
+\end{adjustbox}
+\par\vspace{2pt}\parbox{\linewidth}{\footnotesize All learned/tuned settings come from $n\le100$. Gap and PI are relative to the best solution found in this experiment.}
+\end{table}

@@ -1,0 +1,26 @@
+\begin{table}[t]
+\centering
+\caption{Solomon benchmark ($n=100$, $T=5{,}000$, 5 seeds)}\label{tab:solomon}
+\setlength{\tabcolsep}{3.5pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrrrrrrrr}
+\toprule
+Class & \multicolumn{2}{c}{BKS} & \multicolumn{2}{c}{\Uni{}} & \multicolumn{2}{c}{\Rw{}} & \multicolumn{2}{c}{\sgalns{}} & \multicolumn{2}{c}{Tuned static}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}\cmidrule(lr){10-11}
+ & CNV & CTD & CNV & CTD & CNV & CTD & CNV & CTD & CNV & CTD\\ \midrule
+C1 & 90 & 7,455 & \textbf{90.0} & \textbf{7,455} & \textbf{90.0} & \textbf{7,455} & \textbf{90.0} & \textbf{7,455} & \textbf{90.0} & \textbf{7,455}\\
+C2 & 24 & 4,719 & \textbf{24.0} & 4,771 & \textbf{24.0} & 4,769 & \textbf{24.0} & \textbf{4,719} & \textbf{24.0} & 4,769\\
+R1 & 143 & 14,524 & 149.8 & 14,496 & 149.6 & 14,416 & 148.2 & 14,530 & \textbf{148.0} & \textbf{14,549}\\
+R2 & 30 & 10,461 & 33.2 & 10,469 & 33.4 & 10,396 & \textbf{33.0} & \textbf{10,439} & 33.4 & 10,406\\
+RC1 & 92 & 11,073 & 97.0 & 11,051 & 97.4 & 10,978 & \textbf{95.8} & \textbf{11,005} & 96.2 & 10,970\\
+RC2 & 26 & 8,954 & \textbf{27.0} & 9,110 & \textbf{27.0} & 9,100 & \textbf{27.0} & \textbf{9,040} & \textbf{27.0} & 9,041\\
+\midrule Total & 405 & 57,187 & 421.0 & 57,352 & 421.4 & 57,115 & \textbf{418.0} & \textbf{57,188} & 418.6 & 57,190\\
+\midrule Gap TD (\%)$^{a}$ & \multicolumn{2}{c}{--} & \multicolumn{2}{c}{2.09} & \multicolumn{2}{c}{1.86} & \multicolumn{2}{c}{\textbf{1.48}} & \multicolumn{2}{c}{1.69}\\
+Primal integral (\%) & \multicolumn{2}{c}{--} & \multicolumn{2}{c}{5.44} & \multicolumn{2}{c}{5.58} & \multicolumn{2}{c}{\textbf{5.05}} & \multicolumn{2}{c}{5.07}\\
+Time (s) & \multicolumn{2}{c}{--} & \multicolumn{2}{c}{1.10} & \multicolumn{2}{c}{1.09} & \multicolumn{2}{c}{2.15} & \multicolumn{2}{c}{0.97}\\
+\bottomrule
+\multicolumn{11}{l}{\footnotesize $^{a}$ mean over runs whose NV equals the reference NV.}\\
+\end{tabular}
+\end{adjustbox}
+\par\vspace{2pt}\parbox{\linewidth}{\footnotesize CNV/CTD: vehicles and distance summed over the instances of a class (mean over seeds). Bold: best among the compared methods (lexicographically: CNV, then CTD).}
+\end{table}

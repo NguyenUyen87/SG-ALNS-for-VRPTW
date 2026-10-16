@@ -1,0 +1,25 @@
+\begin{table}[t]
+\centering
+\caption{Greedy actions of the trained policies on Solomon ($T=5{,}000$}\label{tab:collapse}
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{llcccrr}
+\toprule
+Model & $a^1$ (operators) & $a^2$ ($q$) & $a^3$ ($m$) & Share & \# \\ \midrule
+\sgalns{} & RW weights & 30\% & 3 & 1.00 & 1\\
+w/o expert & Worst/Regret-3 & 30\% & 3 & 1.00 & 1\\
+w/o $a^1$ & RW weights & 20\% & 1 & 0.73 & 2\\
+w/o $a^2$ & Worst/Regret-3 & $\mathcal U[5,30]\%$ & 3 & 1.00 & 1\\
+w/o $a^3$ & Worst/Regret-3 & 30\% & 1 & 1.00 & 1\\
+w/o dyn.\ TW & Worst/Regret-3 & 30\% & 0.3 & 1.00 & 1\\
+MLP encoder & Worst/Regret-3 & 30\% & 0.3 & 1.00 & 1\\
+\sgalns{}, seed 1 & Worst/Regret-3 & 30\% & 0.3 & 1.00 & 1\\
+\sgalns{}, seed 2 & Wait/Regret-3 & 30\% & 1 & 1.00 & 1\\
+\sgc{} & Worst/Regret-3 & $\mathcal U[5,30]\%$ & 0.3 & 1.00 & 1\\
+\midrule Iteration-level GNN & Worst/Regret-3 & $\mathcal U[5,30]\%$ & 1 & 1.00 & 1\\
+Iteration-level MLP & Worst/Regret-3 & $\mathcal U[5,30]\%$ & 1 & 1.00 & 1\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{2pt}\parbox{\linewidth}{\footnotesize All decisions of all runs). \emph{Share}: fraction of decisions equal to the most frequent action; \emph{\#}: number of distinct actions observed.}
+\end{table}

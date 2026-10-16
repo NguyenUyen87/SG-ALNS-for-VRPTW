@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\caption{Hierarchical two-sided comparison with the strongest baselines (Solomon, $T=5{,}000$)}\label{tab:stats}
+\setlength{\tabcolsep}{2.5pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lcccccccc}
+\toprule
+vs.\ & $\Delta$CNV [95\% CI] & $+/-$ & $p$ & $p_{\mathrm{H}}$ & Eq. & $\Delta$TD \% [95\% CI] (n) & $p$ & Eq.\\ \midrule
+\Rw{} & $-$3.4 [$-$6.2, $-$1.2] & 8/0 & 0.012 & 0.081 & -- & $-$0.30 [$-$0.74, +0.05] (48) & 0.246 & --\\
+Tuned \Rw{} & $-$1.8 [$-$3.8, $-$0.2] & 7/2 & 0.020 & 0.123 & \checkmark & $-$0.06 [$-$0.26, +0.16] (47) & 0.263 & --\\
+Tuned static & $-$0.6 [$-$2.0, +0.8] & 3/1 & 0.581 & 1.000 & \checkmark & $-$0.22 [$-$0.63, +0.11] (52) & 0.423 & --\\
+Tuned static (285) & $-$1.0 [$-$2.4, +0.2] & 5/2 & 0.061 & 0.243 & \checkmark & +0.11 [$-$0.16, +0.35] (49) & 0.122 & --\\
+\Rw{}, $T$=10k & $-$1.8 [$-$3.6, $-$0.4] & 6/1 & 0.031 & 0.156 & \checkmark & +0.07 [$-$0.35, +0.39] (49) & 0.102 & --\\
+Tuned \Rw{}, $T$=10k & $-$0.8 [$-$2.2, +0.2] & 3/1 & 0.141 & 0.422 & \checkmark & +0.29 [+0.10, +0.48] (52) & 0.005 & --\\
+Tuned static, $T$=10k & +0.2 [$-$1.2, +1.6] & 2/3 & 1.000 & 1.000 & \checkmark & +0.16 [$-$0.18, +0.43] (51) & 0.031 & --\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{2pt}\parbox{\linewidth}{\footnotesize $\Delta$: \sgalns{} minus baseline (negative: \sgalns{} better), 95\% CI; $+/-$: instances with fewer/more vehicles; $p$: unadjusted, $p_{\mathrm{H}}$: Holm over the 7 rows; Eq.: TOST equivalence; ``$T$=10k'': baseline at equal run time.}
+\end{table}

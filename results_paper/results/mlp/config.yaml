@@ -1,0 +1,36 @@
+env:
+  K: 50
+  T: 2500
+  dyn: true
+  lam_nv: 5.0
+  p_main: 0.7
+  red_iters: null
+  reward: td
+  sizes:
+  - 50
+  - 100
+  use_a1: true
+  use_a2: true
+  use_a3: true
+model:
+  encoder: mlp
+  h: 64
+  layers: 3
+ppo:
+  clip: 0.2
+  curriculum: true
+  curriculum_switch: 0.4
+  ent_end: 0.001
+  ent_start: 0.01
+  episodes: 2400
+  epochs: 4
+  gamma: 0.99
+  lam: 0.95
+  lr: 0.0003
+  minibatch: 256
+  n_envs: 8
+  torch_threads: 2
+  val_every: 5
+  val_instances: 24
+  val_size: 100
+seed: 0

@@ -1,0 +1,163 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{adriaensen2022dac}
+Adriaensen, S., Biedenkapp, A., Shala, G., Awad, N., Eimer, T., Lindauer, M.,
+  Hutter, F.: Automated dynamic algorithm configuration. Journal of Artificial
+  Intelligence Research  \textbf{75},  1633--1699 (2022)
+
+\bibitem{biedenkapp2020dac}
+Biedenkapp, A., Bozkurt, H.F., Eimer, T., Hutter, F., Lindauer, M.: Dynamic
+  algorithm configuration: Foundation of a new meta-algorithmic framework. In:
+  Proceedings of the 24th European Conference on Artificial Intelligence
+  (ECAI). Frontiers in Artificial Intelligence and Applications, vol.~325, pp.
+  427--434. IOS Press (2020)
+
+\bibitem{cherrered2026roadef}
+Cherrered, A., Oulamara, A., Ramdane Cherif-Khettaf, W.: Reinforcement
+  learning-enhanced operator selection in adaptive large neighborhood search:
+  Application to {CVRP} and {VRPTW}. In: 27e Congr{\`e}s Annuel de la
+  Soci{\'e}t{\'e} Fran{\c{c}}aise de Recherche Op{\'e}rationnelle et d'Aide
+  {\`a} la D{\'e}cision (ROADEF) (2026)
+
+\bibitem{christiaens2020sisr}
+Christiaens, J., Vanden~Berghe, G.: Slack induction by string removals for
+  vehicle routing problems. Transportation Science  \textbf{54}(2),  417--433
+  (2020)
+
+\bibitem{demsar2006}
+Dem{\v{s}}ar, J.: Statistical comparisons of classifiers over multiple data
+  sets. Journal of Machine Learning Research  \textbf{7},  1--30 (2006)
+
+\bibitem{eiben1999control}
+Eiben, A.E., Hinterding, R., Michalewicz, Z.: Parameter control in evolutionary
+  algorithms. IEEE Transactions on Evolutionary Computation  \textbf{3}(2),
+  124--141 (1999)
+
+\bibitem{eimer2021dacbench}
+Eimer, T., Biedenkapp, A., Reimer, M., Adriaensen, S., Hutter, F., Lindauer,
+  M.: {DACBench}: A benchmark library for dynamic algorithm configuration. In:
+  Proceedings of the 30th International Joint Conference on Artificial
+  Intelligence (IJCAI). pp. 1668--1674 (2021)
+
+\bibitem{falkner2022lns}
+Falkner, J.K., Thyssens, D., Schmidt-Thieme, L.: Large neighborhood search
+  based on neural construction heuristics. arXiv preprint arXiv:2205.00772
+  (2022)
+
+\bibitem{gehring1999}
+Gehring, H., Homberger, J.: A parallel hybrid evolutionary metaheuristic for
+  the vehicle routing problem with time windows. In: Proceedings of EUROGEN99.
+  pp. 57--64 (1999)
+
+\bibitem{hottung2020nlns}
+Hottung, A., Tierney, K.: Neural large neighborhood search for the capacitated
+  vehicle routing problem. In: Proceedings of the 24th European Conference on
+  Artificial Intelligence (ECAI). pp. 443--450 (2020)
+
+\bibitem{hu2020gine}
+Hu, W., Liu, B., Gomes, J., Zitnik, M., Liang, P., Pande, V., Leskovec, J.:
+  Strategies for pre-training graph neural networks. In: International
+  Conference on Learning Representations (ICLR) (2020)
+
+\bibitem{johnn2024grlos}
+Johnn, S.N., Darvariu, V.A., Handl, J., Kalcsics, J.: A graph reinforcement
+  learning framework for neural adaptive large neighbourhood search. Computers
+  \& Operations Research  \textbf{172},  106791 (2024)
+
+\bibitem{kallestad2023}
+Kallestad, J., Hasibi, R., Hemmati, A., S{\"o}rensen, K.: A general deep
+  reinforcement learning hyperheuristic framework for solving combinatorial
+  optimization problems. European Journal of Operational Research
+  \textbf{309}(1),  446--468 (2023)
+
+\bibitem{karimi2022survey}
+Karimi-Mamaghan, M., Mohammadi, M., Meyer, P., Karimi-Mamaghan, A.M., Talbi,
+  E.G.: Machine learning at the service of meta-heuristics for solving
+  combinatorial optimization problems: A state-of-the-art. European Journal of
+  Operational Research  \textbf{296}(2),  393--422 (2022)
+
+\bibitem{lopez2016irace}
+L{\'o}pez-Ib{\'a}{\~n}ez, M., Dubois-Lacoste, J., C{\'a}ceres, L.P., Birattari,
+  M., St{\"u}tzle, T.: The irace package: Iterated racing for automatic
+  algorithm configuration. Operations Research Perspectives  \textbf{3},
+  43--58 (2016)
+
+\bibitem{mara2022survey}
+Mara, S.T.W., Norcahyo, R., Jodiawan, P., Lusiantoro, L., Rifai, A.P.: A survey
+  of adaptive large neighborhood search algorithms and applications. Computers
+  \& Operations Research  \textbf{146},  105903 (2022)
+
+\bibitem{pisinger2007general}
+Pisinger, D., Ropke, S.: A general heuristic for vehicle routing problems.
+  Computers \& Operations Research  \textbf{34}(8),  2403--2435 (2007)
+
+\bibitem{reijnen2024}
+Reijnen, R., Zhang, Y., Lau, H.C., Bukhsh, Z.: Online control of adaptive large
+  neighborhood search using deep reinforcement learning. In: Proceedings of the
+  International Conference on Automated Planning and Scheduling (ICAPS).
+  vol.~34, pp. 475--483 (2024)
+
+\bibitem{ropke2006alns}
+Ropke, S., Pisinger, D.: An adaptive large neighborhood search heuristic for
+  the pickup and delivery problem with time windows. Transportation Science
+  \textbf{40}(4),  455--472 (2006)
+
+\bibitem{santini2018}
+Santini, A., Ropke, S., Hvattum, L.M.: A comparison of acceptance criteria for
+  the adaptive large neighbourhood search metaheuristic. Journal of Heuristics
+  \textbf{24}(5),  783--815 (2018)
+
+\bibitem{savelsbergh1992}
+Savelsbergh, M.W.P.: The vehicle routing problem with time windows: Minimizing
+  route duration. ORSA Journal on Computing  \textbf{4}(2),  146--154 (1992)
+
+\bibitem{schulman2016gae}
+Schulman, J., Moritz, P., Levine, S., Jordan, M., Abbeel, P.: High-dimensional
+  continuous control using generalized advantage estimation. In: International
+  Conference on Learning Representations (ICLR) (2016)
+
+\bibitem{schulman2017ppo}
+Schulman, J., Wolski, F., Dhariwal, P., Radford, A., Klimov, O.: Proximal
+  policy optimization algorithms. arXiv preprint arXiv:1707.06347  (2017)
+
+\bibitem{shaw1998}
+Shaw, P.: Using constraint programming and local search methods to solve
+  vehicle routing problems. In: Principles and Practice of Constraint
+  Programming -- CP98. LNCS, vol.~1520, pp. 417--431. Springer (1998)
+
+\bibitem{solomon1987}
+Solomon, M.M.: Algorithms for the vehicle routing and scheduling problems with
+  time window constraints. Operations Research  \textbf{35}(2),  254--265
+  (1987)
+
+\bibitem{speck2021dac}
+Speck, D., Biedenkapp, A., Hutter, F., Mattm{\"u}ller, R., Lindauer, M.:
+  Learning heuristic selection with dynamic algorithm configuration. In:
+  Proceedings of the International Conference on Automated Planning and
+  Scheduling (ICAPS). vol.~31, pp. 597--605 (2021)
+
+\bibitem{turkes2021meta}
+Turke{\v{s}}, R., S{\"o}rensen, K., Hvattum, L.M.: Meta-analysis of
+  metaheuristics: Quantifying the effect of adaptiveness in adaptive large
+  neighborhood search. European Journal of Operational Research
+  \textbf{292}(2),  423--442 (2021)
+
+\bibitem{wang2025ppoalns}
+Wang, Z., Cui, Q., Tan, B., Yang, X., Zhou, W., Huang, X.: Reinforcement
+  learning-guided adaptive large neighborhood search for vehicle routing
+  problem with time windows. Journal of Combinatorial Optimization
+  \textbf{50}, ~35 (2025)
+
+\bibitem{xie2025pod}
+Xie, L., Li, H.: Solving the pod repositioning problem with deep reinforced
+  adaptive large neighborhood search. arXiv preprint arXiv:2506.02746 (2025)
+
+\bibitem{yu2026dacalns}
+Yu, S., Mao, W., Wu, Z., Puchinger, J.: New adaptive mechanism for large
+  neighborhood search using dual actor-critic. arXiv preprint arXiv:2601.11414
+  (2026)
+
+\end{thebibliography}

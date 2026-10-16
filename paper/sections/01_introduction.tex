@@ -1,0 +1,71 @@
+%=====================================================================================
+\section{Introduction}\label{sec:intro}
+%=====================================================================================
+The vehicle routing problem with time windows (VRPTW) asks for minimum-cost routes that
+serve every customer within its time window. It is NP-hard, and Adaptive Large
+Neighbourhood Search (ALNS)~\cite{ropke2006alns,pisinger2007general} is one of the most widely
+used metaheuristics for it~\cite{mara2022survey}. At every iteration, a \emph{destroy} operator removes $q$
+customers from the incumbent, a \emph{repair} operator re-inserts them, and a
+simulated-annealing (SA) criterion decides acceptance; a roulette wheel (RW) biases
+operator selection towards recently successful operators. A
+meta-analysis~\cite{turkes2021meta}, however, found that this adaptive layer improves
+solution quality by only about 0.14\% on average. This makes ALNS a natural target for
+learned \emph{algorithm control}~\cite{karimi2022survey}, also known as parameter
+control~\cite{eiben1999control} or dynamic algorithm configuration
+(DAC)~\cite{biedenkapp2020dac,adriaensen2022dac}. Recent works train deep
+reinforcement learning (RL) agents to control ALNS at every
+iteration~\cite{kallestad2023,reijnen2024,johnn2024grlos,wang2025ppoalns} and report
+gains over RW.
+
+These agents share three limitations. First, to keep the Markov decision process (MDP)
+tractable, they are trained on short episodes (20 decisions in
+GRLOS~\cite{johnn2024grlos}, 100 iterations in DR-ALNS~\cite{reijnen2024}) or on runs
+shorter than at deployment (1{,}000 vs.\ up to 10{,}000 iterations in
+DRLH~\cite{kallestad2023}), and Johnn et al.~\cite{johnn2024grlos} report degradation
+outside the training horizon. Second, most of them fix the destroy scale and the temperature, although both
+strongly affect ALNS~\cite{ropke2006alns,santini2018}; DR-ALNS~\cite{reijnen2024} and
+recent variants~\cite{cherrered2026roadef,xie2025pod} also learn them. Third, to our knowledge, none of them can fall
+back to the RW rule as one of its actions.
+
+More fundamentally, it is rarely checked \emph{why} the agent wins: does it exploit the
+search state, or has it merely found a better static configuration? Control subsumes
+configuration, so a controller can win without being adaptive; DAC studies therefore
+compare learned policies with the best static
+configuration~\cite{biedenkapp2020dac,eimer2021dacbench}. In RL-controlled ALNS,
+Reijnen et al.~\cite{reijnen2024} compare with an ALNS tuned by SMAC, but whether the
+learned policies actually depend on the state, and how they vary across training runs,
+has not been reported.
+
+We study this question with \sgalns{} (Segment-level Graph ALNS), a controller designed
+to be favourable to RL. Following the DAC formulation, in which a policy
+reconfigures the algorithm at fixed intervals~\cite{biedenkapp2020dac}, one decision
+configures the next $K$ iterations, so that proximal policy optimisation (PPO) can be
+trained on complete ALNS runs. Each decision jointly selects the operators, the destroy
+scale and the temperature from a graph state with dynamic time-window features, and the
+action space contains the RW rule. Our contributions are:
+\begin{itemize}
+\item \textbf{A segment-level MDP for ALNS} on the VRPTW, used as a deliberately
+favourable test bed rather than as a new principle: it adopts interval-based decisions
+from DAC~\cite{biedenkapp2020dac} and joint control of operators, destroy scale and
+temperature from DR-ALNS~\cite{reijnen2024}, and adds full-trajectory training, a
+dynamic time-window graph state and an \emph{expert-inclusive} action space.
+\item \textbf{An evaluation protocol with six controls} for RL-controlled ALNS. Static
+baselines and Friedman--Nemenyi tests are established practice in DAC and algorithm
+benchmarking~\cite{eimer2021dacbench,demsar2006}; we combine them with a policy-collapse
+diagnostic, training-seed replication, tuned static \emph{and} tuned \Rw{} baselines
+with a tuning budget smaller than one training run, a dynamic-headroom test, a
+time-matched comparison, and transfer across budgets and instance sizes up to $n=400$,
+all evaluated with hierarchical two-sided tests and equivalence tests.
+\item \textbf{Evidence that learned ALNS control on the VRPTW is, in our setting,
+learned configuration}: \tCollapsed{} of the \tNpol{} trained policies choose a
+constant action on the instances and budgets we examined and ignore counterfactual
+changes of their state, while the exceptions are worse or, in one training seed, a
+time-dependent schedule no better than a tuned constant; seed-to-seed differences dominate, tuned
+configurations are equivalent in fleet size, time-dependent schedules offer small
+headroom that a direct search finds but the policies do not exploit, and transfer
+follows the training distribution rather than any adaptation.
+\end{itemize}
+Table~\ref{tab:controls} summarises the six controls and their outcome; \Sect~\ref{sec:results}
+details them.
+{\widetables
+\input{generated/tables/controls}}

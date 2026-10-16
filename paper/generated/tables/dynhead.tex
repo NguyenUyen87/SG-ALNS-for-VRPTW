@@ -1,0 +1,21 @@
+\begin{table}[h]
+\centering
+\caption{Dynamic headroom}\label{tab:dynhead}
+\setlength{\tabcolsep}{3pt}\small
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lr}
+\toprule
+Schedule & Score\\ \midrule
+String/Regret-3, 20\%, $m$=0.3 $\rightarrow$ String/Regret-3, 30\%, $m$=3 & +0.81\\
+String/Regret-3, 30\%, $m$=0.3 $\rightarrow$ RW weights, 30\%, $m$=1 & +0.81\\
+String/Regret-3, 20\%, $m$=0.3 $\rightarrow$ RW weights, 30\%, $m$=3 & +0.79\\
+String/Regret-3, 20\%, $m$=0.3 $\rightarrow$ String/Regret-3, 30\%, $m$=1 & +0.79\\
+String/Regret-3, 20\%, $m$=1 $\rightarrow$ RW weights, 30\%, $m$=1 & +0.78\\
+String/Regret-3, 30\%, $m$=0.3 (constant) & +0.70\\
+String/Regret-3, 30\%, $m$=1 (constant) & +0.63\\
+String/Regret-3, 20\%, $m$=1 (constant) & +0.55\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{2pt}\parbox{\linewidth}{\footnotesize Best two-phase schedules (first half $\rightarrow$ second half of the main phase) and best constants among the 10 best static actions, on the 24 generated tuning instances (3 seeds, $T=5{,}000$). Score as in Table~\ref{tab:static}.}
+\end{table}

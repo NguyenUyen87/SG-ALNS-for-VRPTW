@@ -1,0 +1,84 @@
+% =====================================================================================
+% SG-ALNS: Segment-Level Graph RL for ALNS Configuration in the VRPTW
+% IEEE conference template (IEEEtran.cls V1.8b, conference_101719.tex).
+%
+% Build:   latexmk -pdf main.tex                (named version)
+%          latexmk -pdf main_anonymous.tex      (double-blind version, same source)
+%          latexmk -pdf supplementary.tex       (supplementary material)
+%          latexmk -pdf main_lncs.tex           (Springer LNCS layout of the same sections)
+% All numbers come from generated/*.tex, written by ../make_paper.sh from the results.
+% Do not edit generated/ by hand.
+% =====================================================================================
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{cite}
+\usepackage{textcomp}
+\input{preamble}
+\newcommand{\Sect}{Section}
+\newcommand{\para}[1]{\paragraph{#1}}            % IEEEtran adds the colon
+
+% two-column layout: wide floats span both columns
+\newenvironment{widefigure}[1][t]{\begin{figure*}[#1]}{\end{figure*}}
+\newenvironment{widetable}[1][t]{\begin{table*}[#1]}{\end{table*}}
+\makeatletter
+\newcommand{\widetables}{\renewenvironment{table}[1][t]{\begin{table*}[##1]}{\end{table*}}}
+\makeatother
+
+\begin{document}
+
+\ifanonymous
+\title{SG-ALNS: Segment-Level Graph RL for ALNS Configuration in the VRPTW}
+\author{\IEEEauthorblockN{Anonymous Author(s)}
+\IEEEauthorblockA{\textit{Affiliation withheld for double-blind review}}}
+\else
+\title{SG-ALNS: Segment-Level Graph RL for ALNS Configuration in the VRPTW%
+\thanks{$^{*}$Corresponding authors: Sang X. Tran (sangtx@vinhuni.edu.vn) and Uyen T. Nguyen
+(uyennt@vinhuni.edu.vn).}}
+\author{\IEEEauthorblockN{Duong Q. Vo}
+\IEEEauthorblockA{\textit{Faculty of Information Technology} \\
+\textit{Vinh University}\\
+Nghe An, Vietnam \\
+235748020110196@vinhuni.edu.vn}
+\and
+\IEEEauthorblockN{Sang X. Tran$^{*}$}
+\IEEEauthorblockA{\textit{Institute of Information Technology} \\
+\textit{and Digital Transformation, Vinh University}\\
+Nghe An, Vietnam \\
+sangtx@vinhuni.edu.vn}
+\and
+\IEEEauthorblockN{Uyen T. Nguyen$^{*}$}
+\IEEEauthorblockA{\textit{Faculty of Information Technology} \\
+\textit{Vinh University}\\
+Nghe An, Vietnam \\
+uyennt@vinhuni.edu.vn}
+}
+\fi
+
+\maketitle
+
+\begin{abstract}
+\input{sections/00_abstract}
+\end{abstract}
+
+\begin{IEEEkeywords}
+reinforcement learning, adaptive large neighbourhood search, algorithm configuration,
+evaluation methodology, vehicle routing problem with time windows
+\end{IEEEkeywords}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_method}
+\input{sections/04_experimental_setup}
+\input{sections/05_results}
+\input{sections/06_conclusion}
+
+\ifanonymous\else
+\section*{Disclosure of Interests}
+The authors have no competing interests to declare that are relevant to the content of
+this article.
+\fi
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

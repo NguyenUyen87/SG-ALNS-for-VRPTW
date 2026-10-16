@@ -1,0 +1,15 @@
+% Abstract text (no environment): wrapped by main.tex (IEEE) or main_lncs.tex (LNCS).
+Reinforcement learning (RL) is increasingly used to control Adaptive Large Neighbourhood
+Search (ALNS), and its gains are usually attributed to state-dependent control. We test
+this attribution on the vehicle routing problem with time windows (VRPTW) with SG-ALNS, a
+segment-level graph RL controller that jointly selects the operators, the destroy scale
+and the annealing temperature, and can fall back to the classical roulette wheel. Six
+controls, namely policy inspection with counterfactual states, training-seed replication,
+tuned baselines, a dynamic-headroom search, equal run time, and transfer across budgets
+and sizes, show that SG-ALNS learns an effective configuration, not a controller:
+\tCollapsed{} of \tNpol{} trained policies select a single action and ignore
+counterfactual changes of their state, cheaply tuned static configurations are
+statistically equivalent in fleet size, and the fleet reduction over the roulette wheel
+(\rcnvSg{} vs.\ \rcnvRw{} vehicles on Solomon) does not survive a correction for multiple
+comparisons. These results show which controls are needed before the gains of RL are
+attributed to adaptive control.

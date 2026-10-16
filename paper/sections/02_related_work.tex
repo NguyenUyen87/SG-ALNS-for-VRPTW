@@ -1,0 +1,54 @@
+%=====================================================================================
+\section{Related Work}\label{sec:related}
+%=====================================================================================
+\emph{ALNS.} ALNS~\cite{ropke2006alns,pisinger2007general} combines destroy operators
+(e.g.\ Shaw~\cite{shaw1998} and string~\cite{christiaens2020sisr} removals), repair
+operators, an acceptance criterion~\cite{santini2018} and a roulette wheel. Unlike
+neural LNS~\cite{hottung2020nlns,falkner2022lns}, we keep classical operators and learn
+how to schedule them.
+
+\emph{RL-controlled ALNS.}
+Kallestad et al.~\cite{kallestad2023} (DRLH) replace the adaptive layer with a deep RL
+hyper-heuristic that selects a heuristic at every iteration; it is trained with PPO on
+complete 1{,}000-iteration runs under a fixed SA schedule. DR-ALNS~\cite{reijnen2024},
+the closest work to ours, also sets the destroy severity and the SA temperature at
+every iteration, from seven flat features and 100-iteration training episodes; joint
+control of operators and parameters is therefore not new. GRLOS~\cite{johnn2024grlos}
+encodes the solution with a graph neural network (GNN) and selects operators with a
+deep Q-network, using a fixed destroy scale and short training horizons.
+PPO-ALNS~\cite{wang2025ppoalns} integrates PPO-based operator selection into ALNS for
+the VRPTW. Concurrently, Cherrered et al.~\cite{cherrered2026roadef} let PPO choose the
+destroy operator, the destruction degree and the temperature for the CVRP (the VRPTW is
+in progress), Xie and Li~\cite{xie2025pod} apply DR-ALNS-style control to pod
+repositioning, and DAC-ALNS~\cite{yu2026dacalns} selects operators with a GNN-based dual
+actor-critic. Our controller thus shares its ingredients with these works. None of them reports the learned actions, their variation across
+training seeds or an equal-time comparison (Table~\ref{tab:related}).
+
+\emph{Configuration versus control.}
+Offline configurators such as irace~\cite{lopez2016irace} fix parameter values for an
+instance distribution, whereas parameter control~\cite{eiben1999control} and
+DAC~\cite{biedenkapp2020dac,adriaensen2022dac}, often solved by RL~\cite{speck2021dac},
+adapt them during a run; we bring this comparison to RL-controlled ALNS.
+
+\begin{widetable}[t]
+\centering
+\caption{Positioning against RL-controlled ALNS works}\label{tab:related}
+\setlength{\tabcolsep}{2.6pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lccccccc}
+\toprule
+Work & Decision & Graph & Dyn.\ TW & Learns $q$ & Learns $\tau$ & Full-run training & RW action\\
+\midrule
+DRLH~\cite{kallestad2023}       & iteration & --         & --         & --         & --         & \checkmark$^{\ddagger}$ & -- \\
+DR-ALNS~\cite{reijnen2024}      & iteration & --         & --         & \checkmark & \checkmark & --$^{\dagger}$          & -- \\
+ALNS-RL~\cite{cherrered2026roadef} & n/r   & --         & \checkmark & \checkmark & \checkmark & n/r                     & -- \\
+GRLOS~\cite{johnn2024grlos}     & iteration & \checkmark & --         & --         & --         & --                      & -- \\
+\sgalns{} (ours)                & segment   & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark$^{\S}$       & \checkmark \\
+\bottomrule
+\multicolumn{8}{l}{\footnotesize \checkmark: yes; --: no; n/r: not reported (as reported in the cited papers).}\\
+\multicolumn{8}{l}{\footnotesize $^{\dagger}$ 100-iteration episodes, evaluated on 100--200 iterations.}\\
+\multicolumn{8}{l}{\footnotesize $^{\ddagger}$ complete 1{,}000-iteration runs, deployed for up to 10{,}000 iterations.}\\
+\multicolumn{8}{l}{\footnotesize $^{\S}$ complete 2{,}500-iteration runs, deployed for 5{,}000 (1{,}000--20{,}000 in \Sect~\ref{sec:budgets}).}
+\end{tabular}
+\end{adjustbox}
+\end{widetable}
